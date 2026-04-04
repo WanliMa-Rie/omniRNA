@@ -1,47 +1,70 @@
 # If you are not sure what all these fields mean, please refer our documentation here:
 # https://evalai.readthedocs.io/en/latest/configuration.html
-title: Random Number Generator Challenge
-short_description: Random number generation challenge for each submission
+title: OmniRNA Challenge
+short_description: "OmniRNA: A Discovery Challenge for RNA Foundation Models"
 description: templates/description.html
 evaluation_details: templates/evaluation_details.html
 terms_and_conditions: templates/terms_and_conditions.html
 image: logo.jpg
 submission_guidelines: templates/submission_guidelines.html
-category: [Paper, Dataset, Environment, Workshop]
-leaderboard_description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras egestas a libero nec sagittis.
+category: [Dataset, Workshop]
+leaderboard_description: Public development leaderboard and hidden final leaderboard for RNA fitness, structure, and evolutionary reasoning.
 evaluation_script: evaluation_script.zip
 remote_evaluation: False
-start_date: 2019-01-01 00:00:00
-end_date: 2099-05-31 23:59:59
+start_date: 2026-04-15 00:00:00
+end_date: 2026-06-01 23:59:59
 published: True
-tags: 
-  - random-number-generation
-  - machine-learning
-  - data-science
-  - computer-vision
+tags:
+  - rna
+  - foundation-models
+  - variant-effect-prediction
+  - structure-prediction
+  - evolutionary-reasoning
+
 leaderboard:
   - id: 1
     schema:
-      {
-        "labels": ["Metric1", "Metric2", "Metric3", "Total"],
-        "default_order_by": "Total",
-        "metadata": {
-          "Metric1": {
-            "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          },
-          "Metric2": {
-            "sort_ascending": True,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          }
-        }
-      }
+      labels:
+        - Fitness Spearman
+        - Fitness R2
+        - Structure TM-score
+        - Structure RMSD
+        - Structure F1
+        - Evolution Accuracy
+        - Evolution Macro-F1
+        - Overall
+      default_order_by: Overall
+      metadata:
+        Fitness Spearman:
+          sort_ascending: False
+          description: Mean Spearman correlation across all fitness datasets and evaluation splits.
+        Fitness R2:
+          sort_ascending: False
+          description: Secondary diagnostic metric for RNA fitness prediction.
+        Structure TM-score:
+          sort_ascending: False
+          description: Mean TM-score across evaluation molecules for tertiary structure prediction.
+        Structure RMSD:
+          sort_ascending: True
+          description: Secondary diagnostic metric for tertiary structure prediction.
+        Structure F1:
+          sort_ascending: False
+          description: F1 score for RNA secondary-structure base-pair prediction.
+        Evolution Accuracy:
+          sort_ascending: False
+          description: Accuracy for quartet phylogeny classification.
+        Evolution Macro-F1:
+          sort_ascending: False
+          description: Macro-F1 for covariation detection.
+        Overall:
+          sort_ascending: False
+          description: Arithmetic mean of mapped fitness score, structure TM-score, and evolution score.
 
 challenge_phases:
   - id: 1
-    name: Dev Phase
+    name: Public Dev Phase
     description: templates/challenge_phase_1_description.html
-    leaderboard_public: False
+    leaderboard_public: True
     is_public: True
     challenge: 1
     is_active: True
@@ -49,8 +72,8 @@ challenge_phases:
     allowed_email_ids: []
     disable_logs: False
     is_submission_public: True
-    start_date: 2019-01-19 00:00:00
-    end_date: 2099-04-25 23:59:59
+    start_date: 2026-04-15 00:00:00
+    end_date: 2026-06-01 23:59:59
     test_annotation_file: annotations/test_annotations_devsplit.json
     codename: dev
     max_submissions_per_day: 5
@@ -66,38 +89,35 @@ challenge_phases:
       - name: publication_url
         is_visible: True
     submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
+      - name: external_resources
+        description: List all external data, pretrained models, and other public resources used.
         type: text
-        required: False
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
+        required: True
+      - name: uses_foundation_model
+        description: State whether the submission uses a foundation model.
         type: boolean
         required: True
+      - name: technical_report_url
+        description: Optional URL for a technical report accompanying the public leaderboard submission.
+        type: text
+        required: False
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
     allowed_submission_file_types: ".json, .zip, .txt, .tsv, .gz, .csv, .h5, .npy, .npz"
+
   - id: 2
-    name: Test Phase
+    name: Final Hidden Phase
     description: templates/challenge_phase_2_description.html
-    leaderboard_public: True
+    leaderboard_public: False
     is_public: True
     challenge: 2
     is_active: True
     max_concurrent_submissions_allowed: 3
     allowed_email_ids: []
     disable_logs: False
-    is_submission_public: True
-    start_date: 2019-01-01 00:00:00
-    end_date: 2099-05-24 23:59:59
+    is_submission_public: False
+    start_date: 2026-06-01 00:00:00
+    end_date: 2026-06-15 23:59:59
     test_annotation_file: annotations/test_annotations_testsplit.json
     codename: test
     max_submissions_per_day: 5
@@ -113,29 +133,28 @@ challenge_phases:
       - name: publication_url
         is_visible: True
     submission_meta_attributes:
-      - name: TextAttribute
-        description: Sample
+      - name: method_sheet_url
+        description: URL to the required method sheet describing architecture, training, inference, and resource requirements.
         type: text
-      - name: SingleOptionAttribute
-        description: Sample
-        type: radio
-        options: ["A", "B", "C"]
-      - name: MultipleChoiceAttribute
-        description: Sample
-        type: checkbox
-        options: ["alpha", "beta", "gamma"]
-      - name: TrueFalseField
-        description: Sample
+        required: True
+      - name: external_resources
+        description: List all external data, pretrained models, and compute resources used.
+        type: text
+        required: True
+      - name: uses_foundation_model
+        description: State whether the submission uses a foundation model.
         type: boolean
+        required: True
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
+    allowed_submission_file_types: ".zip"
 
 dataset_splits:
   - id: 1
-    name: Train Split
+    name: Development Test Split
     codename: train_split
   - id: 2
-    name: Test Split
+    name: Hidden Final Test Split
     codename: test_split
 
 challenge_phase_splits:
@@ -143,23 +162,15 @@ challenge_phase_splits:
     leaderboard_id: 1
     dataset_split_id: 1
     visibility: 1
-    leaderboard_decimal_precision: 2
+    leaderboard_decimal_precision: 4
     is_leaderboard_order_descending: True
     show_execution_time: True
     show_leaderboard_by_latest_submission: True
-  - challenge_phase_id: 2
-    leaderboard_id: 1
-    dataset_split_id: 1
-    visibility: 3
-    leaderboard_decimal_precision: 2
-    is_leaderboard_order_descending: True
-    showeceution_time: False
-    show_leaderboard_by_latest_submission: False
   - challenge_phase_id: 2
     leaderboard_id: 1
     dataset_split_id: 2
-    visibility: 1
-    leaderboard_decimal_precision: 2
+    visibility: 3
+    leaderboard_decimal_precision: 4
     is_leaderboard_order_descending: True
     show_execution_time: True
-    show_leaderboard_by_latest_submission: True
+    show_leaderboard_by_latest_submission: False
