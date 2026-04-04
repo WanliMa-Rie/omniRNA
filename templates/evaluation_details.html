@@ -1,1 +1,28 @@
-<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+<h2>Evaluation</h2>
+
+<p>
+  OmniRNA has a public development leaderboard and a hidden final leaderboard.
+  The public leaderboard supports iteration during the competition.
+  The hidden leaderboard determines the official final ranking.
+</p>
+
+<h3>Task Metrics</h3>
+<ul>
+  <li><strong>RNA Fitness Prediction:</strong> public metrics are Spearman correlation and R2. The official task score is the unweighted mean Spearman correlation across all fitness datasets and evaluation splits.</li>
+  <li><strong>RNA Structure Prediction:</strong> tertiary structure is evaluated with TM-score and RMSD, and secondary structure is evaluated with F1 score. The official structure task score is the mean TM-score across evaluation molecules.</li>
+  <li><strong>RNA Evolutionary Reasoning:</strong> quartet phylogeny classification is evaluated with accuracy, and covariation detection is evaluated with macro-F1. The official evolution score is the arithmetic mean of these two subtask scores.</li>
+</ul>
+
+<h3>Overall Score</h3>
+<p>
+  The overall challenge score is the arithmetic mean of the three primary task scores after mapping fitness Spearman correlation to the [0, 1] interval with (1 + rho) / 2.
+  TM-score, accuracy, and macro-F1 are already in the [0, 1] range.
+</p>
+
+<h3>Leaderboard Policy</h3>
+<ul>
+  <li>Public leaderboards use development-test splits only.</li>
+  <li>Final rankings use hidden test data.</li>
+  <li>Submission frequency is limited to reduce leaderboard overfitting.</li>
+  <li>Per-task leaderboards and one overall leaderboard are maintained.</li>
+</ul>
