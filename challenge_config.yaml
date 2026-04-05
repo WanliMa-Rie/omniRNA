@@ -11,7 +11,7 @@ category: [Dataset, Workshop]
 leaderboard_description: Public development leaderboard and hidden final leaderboard for RNA fitness, structure, and evolutionary reasoning.
 evaluation_script: evaluation_script.zip
 remote_evaluation: False
-start_date: 2026-04-15 00:00:00
+start_date: 2026-04-01 00:00:00
 end_date: 2026-06-01 23:59:59
 published: True
 tags:
