@@ -1,26 +1,26 @@
-<h2>Submission Guidelines</h2>
+<h4>Submission Guidelines</h4>
 
-<h3>During the Competition</h3>
+<h5>During the Competition</h5>
 <p>
   Participants submit a single JSON prediction file.
   Please follow the required task formats exactly and complete the submission metadata fields.
 </p>
 
-<h3>Allowed Resources</h3>
+<h5>Allowed Resources</h5>
 <ul>
   <li>Public pretrained models are allowed.</li>
   <li>Public unlabeled RNA sequence resources are allowed.</li>
   <li>All external resources must be disclosed.</li>
 </ul>
 
-<h3>Not Allowed</h3>
+<h5>Not Allowed</h5>
 <ul>
   <li>External labeled data that overlap with the released benchmark.</li>
   <li>Any information derived from hidden test sets.</li>
   <li>Any information derived from RNA tertiary structures released after the test freeze date.</li>
 </ul>
 
-<h3>Submission File Format</h3>
+<h5>Submission File Format</h5>
 <p>
   The uploaded file must be a <code>.json</code> file with three top-level sections: <code>fitness</code>, <code>structure</code>, and <code>evolution</code>.
 </p>
@@ -46,7 +46,7 @@
   }
 }</pre>
 
-<h3>Task-Specific Inputs</h3>
+<h5>Task-Specific Inputs</h5>
 <ul>
   <li><strong>RNA Fitness Prediction:</strong> one numeric <code>prediction</code> per variant <code>id</code>.</li>
   <li><strong>RNA Structure Prediction:</strong> one list of secondary-structure base pairs and one list of 3D nucleotide coordinates per RNA <code>id</code>.</li>
