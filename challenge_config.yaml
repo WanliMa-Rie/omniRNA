@@ -167,6 +167,14 @@ challenge_phase_splits:
     show_leaderboard_by_latest_submission: True
   - challenge_phase_id: 2
     leaderboard_id: 1
+    dataset_split_id: 1
+    visibility: 3
+    leaderboard_decimal_precision: 4
+    is_leaderboard_order_descending: True
+    show_execution_time: True
+    show_leaderboard_by_latest_submission: False
+  - challenge_phase_id: 2
+    leaderboard_id: 1
     dataset_split_id: 2
     visibility: 3
     leaderboard_decimal_precision: 4
