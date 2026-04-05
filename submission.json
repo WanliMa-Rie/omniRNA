@@ -1,1 +1,120 @@
-{}
+{
+  "fitness": [
+    {
+      "id": "fit_dev_1",
+      "prediction": 0.9
+    },
+    {
+      "id": "fit_dev_2",
+      "prediction": 0.1
+    },
+    {
+      "id": "fit_dev_3",
+      "prediction": 0.2
+    },
+    {
+      "id": "fit_dev_4",
+      "prediction": 0.8
+    },
+    {
+      "id": "fit_test_1",
+      "prediction": 0.7
+    },
+    {
+      "id": "fit_test_2",
+      "prediction": 0.3
+    },
+    {
+      "id": "fit_test_3",
+      "prediction": 0.4
+    },
+    {
+      "id": "fit_test_4",
+      "prediction": 0.6
+    }
+  ],
+  "structure": [
+    {
+      "id": "str_dev_1",
+      "secondary_pairs": [[0, 5], [1, 4]],
+      "tertiary_coords": [[0.0, 0.0, 0.0], [1.0, 0.0, 0.0], [2.0, 1.0, 0.0], [3.0, 1.0, 0.0], [4.0, 0.0, 0.0], [5.0, 0.0, 0.0]]
+    },
+    {
+      "id": "str_dev_2",
+      "secondary_pairs": [[0, 3]],
+      "tertiary_coords": [[0.0, 0.0, 1.0], [1.0, 1.0, 1.0], [2.0, 1.0, 1.0], [3.0, 0.0, 1.0]]
+    },
+    {
+      "id": "str_test_1",
+      "secondary_pairs": [[0, 4], [1, 3]],
+      "tertiary_coords": [[0.0, 0.0, 2.0], [1.0, 0.0, 2.0], [2.0, 1.0, 2.0], [3.0, 0.0, 2.0], [4.0, 0.0, 2.0]]
+    },
+    {
+      "id": "str_test_2",
+      "secondary_pairs": [[0, 5], [1, 4]],
+      "tertiary_coords": [[0.0, 1.0, 0.0], [1.0, 2.0, 0.0], [2.0, 2.0, 0.0], [3.0, 2.0, 0.0], [4.0, 1.0, 0.0], [5.0, 1.0, 0.0]]
+    }
+  ],
+  "evolution": {
+    "quartet": [
+      {
+        "id": "evo_dev_q1",
+        "prediction": 0
+      },
+      {
+        "id": "evo_dev_q2",
+        "prediction": 2
+      },
+      {
+        "id": "evo_dev_q3",
+        "prediction": 1
+      },
+      {
+        "id": "evo_test_q1",
+        "prediction": 1
+      },
+      {
+        "id": "evo_test_q2",
+        "prediction": 2
+      },
+      {
+        "id": "evo_test_q3",
+        "prediction": 0
+      }
+    ],
+    "covariation": [
+      {
+        "id": "evo_dev_c1",
+        "prediction": 1
+      },
+      {
+        "id": "evo_dev_c2",
+        "prediction": 0
+      },
+      {
+        "id": "evo_dev_c3",
+        "prediction": 1
+      },
+      {
+        "id": "evo_dev_c4",
+        "prediction": 0
+      },
+      {
+        "id": "evo_test_c1",
+        "prediction": 0
+      },
+      {
+        "id": "evo_test_c2",
+        "prediction": 1
+      },
+      {
+        "id": "evo_test_c3",
+        "prediction": 0
+      },
+      {
+        "id": "evo_test_c4",
+        "prediction": 1
+      }
+    ]
+  }
+}

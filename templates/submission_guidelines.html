@@ -2,8 +2,8 @@
 
 <h3>During the Competition</h3>
 <p>
-  Participants submit predictions to the public development leaderboard.
-  Please follow the required submission format for the active phase and complete the submission metadata fields.
+  Participants submit a single JSON prediction file.
+  Please follow the required task formats exactly and complete the submission metadata fields.
 </p>
 
 <h3>Allowed Resources</h3>
@@ -20,12 +20,35 @@
   <li>Any information derived from RNA tertiary structures released after the test freeze date.</li>
 </ul>
 
-<h3>Final Submission Requirements</h3>
+<h3>Submission File Format</h3>
 <p>
-  Final evaluation requires an executable Docker submission.
-  Every final submission must include runnable Docker inference code, model weights, a short method sheet, and a statement listing all external data, pretrained models, and compute resources used.
+  The uploaded file must be a <code>.json</code> file with three top-level sections: <code>fitness</code>, <code>structure</code>, and <code>evolution</code>.
 </p>
 
-<p>
-  The method sheet must describe the model architecture, training recipe, inference procedure, and resource requirements, and must state whether the submission uses a foundation model, task-specific training, retrieval, or a hybrid method.
-</p>
+<pre>{
+  "fitness": [
+    {"id": "fit_example", "prediction": 0.42}
+  ],
+  "structure": [
+    {
+      "id": "str_example",
+      "secondary_pairs": [[0, 9], [1, 8]],
+      "tertiary_coords": [[0.0, 0.0, 0.0], [1.2, 0.1, -0.3]]
+    }
+  ],
+  "evolution": {
+    "quartet": [
+      {"id": "quartet_example", "prediction": 2}
+    ],
+    "covariation": [
+      {"id": "cov_example", "prediction": 1}
+    ]
+  }
+}</pre>
+
+<h3>Task-Specific Inputs</h3>
+<ul>
+  <li><strong>RNA Fitness Prediction:</strong> one numeric <code>prediction</code> per variant <code>id</code>.</li>
+  <li><strong>RNA Structure Prediction:</strong> one list of secondary-structure base pairs and one list of 3D nucleotide coordinates per RNA <code>id</code>.</li>
+  <li><strong>RNA Evolutionary Reasoning:</strong> one topology label in <code>{0, 1, 2}</code> per quartet <code>id</code>, and one binary label in <code>{0, 1}</code> per covariation <code>id</code>.</li>
+</ul>

@@ -1,3 +1,74 @@
 {
-	"foo": "bar"
+  "fitness": [
+    {
+      "id": "fit_dev_1",
+      "dataset": "study_a",
+      "evaluation_split": "in_distribution",
+      "target": 0.9
+    },
+    {
+      "id": "fit_dev_2",
+      "dataset": "study_a",
+      "evaluation_split": "in_distribution",
+      "target": 0.1
+    },
+    {
+      "id": "fit_dev_3",
+      "dataset": "study_b",
+      "evaluation_split": "out_of_distribution",
+      "target": 0.2
+    },
+    {
+      "id": "fit_dev_4",
+      "dataset": "study_b",
+      "evaluation_split": "out_of_distribution",
+      "target": 0.8
+    }
+  ],
+  "structure": [
+    {
+      "id": "str_dev_1",
+      "secondary_pairs": [[0, 5], [1, 4]],
+      "tertiary_coords": [[0.0, 0.0, 0.0], [1.0, 0.0, 0.0], [2.0, 1.0, 0.0], [3.0, 1.0, 0.0], [4.0, 0.0, 0.0], [5.0, 0.0, 0.0]]
+    },
+    {
+      "id": "str_dev_2",
+      "secondary_pairs": [[0, 3]],
+      "tertiary_coords": [[0.0, 0.0, 1.0], [1.0, 1.0, 1.0], [2.0, 1.0, 1.0], [3.0, 0.0, 1.0]]
+    }
+  ],
+  "evolution": {
+    "quartet": [
+      {
+        "id": "evo_dev_q1",
+        "label": 0
+      },
+      {
+        "id": "evo_dev_q2",
+        "label": 2
+      },
+      {
+        "id": "evo_dev_q3",
+        "label": 1
+      }
+    ],
+    "covariation": [
+      {
+        "id": "evo_dev_c1",
+        "label": 1
+      },
+      {
+        "id": "evo_dev_c2",
+        "label": 0
+      },
+      {
+        "id": "evo_dev_c3",
+        "label": 1
+      },
+      {
+        "id": "evo_dev_c4",
+        "label": 0
+      }
+    ]
+  }
 }
