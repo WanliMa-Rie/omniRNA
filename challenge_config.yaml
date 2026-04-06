@@ -67,7 +67,6 @@ challenge_phases:
     is_public: True
     challenge: 1
     is_active: True
-    max_concurrent_submissions_allowed: 3
     allowed_email_ids: []
     disable_logs: False
     is_submission_public: True
@@ -75,31 +74,6 @@ challenge_phases:
     end_date: 2026-06-01 23:59:59
     test_annotation_file: annotations/test_annotations_devsplit.json
     codename: dev
-    max_submissions_per_day: 5
-    max_submissions_per_month: 50
-    max_submissions: 50
-    default_submission_meta_attributes:
-      - name: method_name
-        is_visible: True
-      - name: method_description
-        is_visible: True
-      - name: project_url
-        is_visible: True
-      - name: publication_url
-        is_visible: True
-    submission_meta_attributes:
-      - name: external_resources
-        description: List all external data, pretrained models, and other public resources used.
-        type: text
-        required: True
-      - name: uses_foundation_model
-        description: State whether the submission uses a foundation model.
-        type: boolean
-        required: True
-      - name: technical_report_url
-        description: Optional URL for a technical report accompanying the public leaderboard submission.
-        type: text
-        required: False
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
     allowed_submission_file_types: ".csv"
@@ -111,7 +85,6 @@ challenge_phases:
     is_public: True
     challenge: 2
     is_active: True
-    max_concurrent_submissions_allowed: 3
     allowed_email_ids: []
     disable_logs: False
     is_submission_public: False
@@ -119,31 +92,6 @@ challenge_phases:
     end_date: 2026-06-15 23:59:59
     test_annotation_file: annotations/test_annotations_testsplit.json
     codename: test
-    max_submissions_per_day: 5
-    max_submissions_per_month: 50
-    max_submissions: 50
-    default_submission_meta_attributes:
-      - name: method_name
-        is_visible: True
-      - name: method_description
-        is_visible: True
-      - name: project_url
-        is_visible: True
-      - name: publication_url
-        is_visible: True
-    submission_meta_attributes:
-      - name: method_sheet_url
-        description: URL to the required method sheet describing architecture, training, inference, and resource requirements.
-        type: text
-        required: True
-      - name: external_resources
-        description: List all external data, pretrained models, and compute resources used.
-        type: text
-        required: True
-      - name: uses_foundation_model
-        description: State whether the submission uses a foundation model.
-        type: boolean
-        required: True
     is_restricted_to_select_one_submission: False
     is_partial_submission_evaluation_enabled: False
     allowed_submission_file_types: ".zip"
