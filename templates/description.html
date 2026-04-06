@@ -1,31 +1,31 @@
-<h4>OmniRNA: A Discovery Challenge for RNA Foundation Models</h4>
+<div style="max-width: 940px; margin: 0 auto; color: #16324f;">
+  <div style="padding: 28px 30px; border-radius: 24px; background: linear-gradient(135deg, #0d4f63 0%, #1e7a8c 48%, #7ec8d6 100%); color: #f4fbff; box-shadow: 0 18px 48px rgba(17, 63, 88, 0.18);">
+    <div style="display: inline-block; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.16); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">Overview</div>
+    <h3 style="margin: 16px 0 10px; font-size: 30px; line-height: 1.15; color: #ffffff;">OmniRNA evaluates whether models learn useful and general RNA representations.</h3>
+    <p style="margin: 0; font-size: 16px; line-height: 1.8; color: rgba(255, 255, 255, 0.92);">
+      The benchmark centers on three biological capabilities: predicting mutational fitness, recovering RNA structure, and reasoning about evolutionary constraints.
+      Public development results support iteration; hidden final results determine the official ranking.
+    </p>
+  </div>
 
-<p>
-  RNA plays a central role in molecular biology, but it remains unclear how sequence and structure encode RNA function and fate.
-  OmniRNA is an ECML/PKDD discovery challenge designed to evaluate whether foundation models can learn general and biologically meaningful RNA representations.
-</p>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px;">
+    <div style="padding: 20px; border: 1px solid #d3e9ee; border-radius: 18px; background: #f7fcfd;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #1e6f84;">Fitness</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">Variant-effect prediction is scored with rank-aware and regression-aware metrics.</p>
+    </div>
+    <div style="padding: 20px; border: 1px solid #d3e9ee; border-radius: 18px; background: #f7fcfd;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #1e6f84;">Structure</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">Participants recover both secondary pairing patterns and tertiary geometry from sequence.</p>
+    </div>
+    <div style="padding: 20px; border: 1px solid #d3e9ee; border-radius: 18px; background: #f7fcfd;">
+      <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #1e6f84;">Evolution</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">The benchmark tests whether models preserve functional signals across divergent RNA families.</p>
+    </div>
+  </div>
 
-<p>
-  The challenge is organized around three pillars of RNA biology: mutational fitness, RNA structure, and evolution.
-  Participants are asked to build models that can predict the effects of genetic variants on RNA fitness, infer secondary and tertiary structure from sequence, and identify evolutionary signals that preserve function across divergence.
-</p>
-
-<h5>Tasks</h5>
-<ul>
-  <li><strong>RNA Fitness Prediction:</strong> predict experimentally measured fitness effects for RNA sequence variants.</li>
-  <li><strong>RNA Structure Prediction:</strong> recover RNA secondary and tertiary structure from sequence.</li>
-  <li><strong>RNA Evolutionary Reasoning:</strong> solve quartet phylogeny classification and covariation detection tasks.</li>
-</ul>
-
-<h5>Data Release</h5>
-<p>
-  For each task, we provide training, validation, and development-test splits.
-  A separate hidden final-test split is used for official ranking.
-  Data, starter code, evaluation scripts, and submission templates are provided through the challenge repository and platform.
-</p>
-
-<h5>Why This Challenge Matters</h5>
-<p>
-  Strong RNA models should generalize beyond narrow benchmarks.
-  OmniRNA provides a standard and reproducible evaluation setting for RNA variant effect prediction, structure recovery, and evolutionary reasoning, with direct relevance to RNA therapeutics, synthetic biology, variant interpretation, and comparative genomics.
-</p>
+  <div style="margin-top: 18px; padding: 22px 24px; border-left: 4px solid #4aa6b5; border-radius: 16px; background: #eef7fa;">
+    <p style="margin: 0; line-height: 1.8;">
+      OmniRNA is designed for reproducible evaluation on public benchmark data and uses one shared leaderboard schema across all reported metrics.
+    </p>
+  </div>
+</div>

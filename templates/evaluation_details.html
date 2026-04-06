@@ -1,35 +1,26 @@
-<h4>Evaluation</h4>
+<div style="max-width: 940px; margin: 0 auto; color: #16324f;">
+  <div style="padding: 24px 28px; border-radius: 22px; background: linear-gradient(135deg, #e8f6f8 0%, #f7fcfd 100%); border: 1px solid #d2e8ee;">
+    <div style="display: inline-block; padding: 6px 12px; border-radius: 999px; background: #d7eef3; color: #16596c; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">Evaluation</div>
+    <h3 style="margin: 14px 0 8px; font-size: 28px; color: #12354f;">Task metrics and one overall score.</h3>
+    <p style="margin: 0; line-height: 1.8;">OmniRNA reports task-level performance for fitness, structure, and evolution, together with one transparent aggregate score.</p>
+  </div>
 
-<p>
-  OmniRNA has a public development leaderboard and a hidden final leaderboard.
-  The public leaderboard supports iteration during the competition.
-  The hidden leaderboard determines the official final ranking.
-</p>
-
-<h5>Task Metrics</h5>
-<ul>
-  <li><strong>RNA Fitness Prediction:</strong> public metrics are Spearman correlation and R2. The official task score is the unweighted mean Spearman correlation across all fitness datasets and evaluation splits.</li>
-  <li><strong>RNA Structure Prediction:</strong> tertiary structure is evaluated with TM-score and RMSD, and secondary structure is evaluated with F1 score. The official structure task score is the mean TM-score across evaluation molecules.</li>
-  <li><strong>RNA Evolutionary Reasoning:</strong> quartet phylogeny classification is evaluated with accuracy, and covariation detection is evaluated with macro-F1. The official evolution score is the arithmetic mean of these two subtask scores.</li>
-</ul>
-
-<h5>Overall Score</h5>
-<p>
-  The overall challenge score is the arithmetic mean of the three primary task scores after mapping fitness Spearman correlation to the [0, 1] interval with (1 + rho) / 2.
-  TM-score, accuracy, and macro-F1 are already in the [0, 1] range.
-</p>
-
-<h5>Leaderboard Policy</h5>
-<ul>
-  <li>Public leaderboards use development-test splits only.</li>
-  <li>Final rankings use hidden test data.</li>
-  <li>Submission frequency is limited to reduce leaderboard overfitting.</li>
-  <li>Per-task leaderboards and one overall leaderboard are maintained.</li>
-</ul>
-
-<h5>Evaluation Input Contract</h5>
-<ul>
-  <li>Fitness submissions must provide one scalar prediction for every released variant identifier.</li>
-  <li>Structure submissions must provide secondary base pairs and tertiary coordinates for every released RNA identifier.</li>
-  <li>Evolution submissions must provide one topology class for each quartet identifier and one binary class for each covariation identifier.</li>
-</ul>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px;">
+    <div style="padding: 22px; border-radius: 18px; background: #ffffff; border: 1px solid #d7e8ee; box-shadow: 0 10px 28px rgba(18, 53, 79, 0.06);">
+      <div style="font-weight: 700; color: #0f5d72;">Fitness</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">Reported metrics are Spearman correlation and R2. The primary fitness score is the mean Spearman correlation across datasets and evaluation splits.</p>
+    </div>
+    <div style="padding: 22px; border-radius: 18px; background: #ffffff; border: 1px solid #d7e8ee; box-shadow: 0 10px 28px rgba(18, 53, 79, 0.06);">
+      <div style="font-weight: 700; color: #0f5d72;">Structure</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">Reported metrics are TM-score, RMSD, and secondary-structure F1. The primary structure score is mean TM-score.</p>
+    </div>
+    <div style="padding: 22px; border-radius: 18px; background: #ffffff; border: 1px solid #d7e8ee; box-shadow: 0 10px 28px rgba(18, 53, 79, 0.06);">
+      <div style="font-weight: 700; color: #0f5d72;">Evolution</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">Reported metrics are quartet accuracy and covariation macro-F1. The primary evolution score is the arithmetic mean of these two values.</p>
+    </div>
+    <div style="padding: 22px; border-radius: 18px; background: #ffffff; border: 1px solid #d7e8ee; box-shadow: 0 10px 28px rgba(18, 53, 79, 0.06);">
+      <div style="font-weight: 700; color: #0f5d72;">Overall</div>
+      <p style="margin: 10px 0 0; line-height: 1.7;">The overall score is the arithmetic mean of mapped fitness score, structure score, and evolution score.</p>
+    </div>
+  </div>
+</div>
