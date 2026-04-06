@@ -237,7 +237,7 @@ if __name__ == "__main__":
             else:
                 add_pull_request_comment(
                     GITHUB_AUTH_TOKEN,
-                    os.path.basename(GITHUB_REPOSITORY),
+                    GITHUB_REPOSITORY,
                     pr_number,
                     errors,
                 )
@@ -245,7 +245,7 @@ if __name__ == "__main__":
             issue_title = (
                 "Following errors occurred while validating the challenge config:"
             )
-            repo_name = os.path.basename(GITHUB_REPOSITORY) if GITHUB_REPOSITORY else ""
+            repo_name = GITHUB_REPOSITORY if GITHUB_REPOSITORY else ""
             create_github_repository_issue(
                 GITHUB_AUTH_TOKEN,
                 repo_name,
