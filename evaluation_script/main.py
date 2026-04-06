@@ -1,5 +1,8 @@
+import csv
+import io
 import json
 import math
+import zipfile
 
 
 FITNESS_LABEL = "Fitness Spearman"
@@ -101,10 +104,7 @@ def tm_d0(length):
 
 def center_coordinates(points):
     count = len(points)
-    return [
-        sum(point[dimension] for point in points) / count
-        for dimension in range(3)
-    ]
+    return [sum(point[dimension] for point in points) / count for dimension in range(3)]
 
 
 def subtract_center(points, center):
@@ -141,10 +141,7 @@ def build_quaternion_matrix(reference, prediction):
 
 
 def multiply_matrix_vector(matrix, vector):
-    return [
-        sum(entry * value for entry, value in zip(row, vector))
-        for row in matrix
-    ]
+    return [sum(entry * value for entry, value in zip(row, vector)) for row in matrix]
 
 
 def normalize(vector):
@@ -300,10 +297,89 @@ def score_split(annotation, submission):
     }
 
 
+def parse_dev_csv(path):
+    submission = {
+        "fitness": [],
+        "structure": [],
+        "evolution": {"quartet": [], "covariation": []},
+    }
+    with open(path, "r", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            task = row["task"]
+            if task == "fitness":
+                submission["fitness"].append(
+                    {"id": row["id"], "prediction": float(row["prediction"])}
+                )
+            elif task == "structure":
+                submission["structure"].append(
+                    {
+                        "id": row["id"],
+                        "secondary_pairs": json.loads(row["secondary_pairs"]),
+                        "tertiary_coords": json.loads(row["tertiary_coords"]),
+                    }
+                )
+            elif task == "evolution_quartet":
+                submission["evolution"]["quartet"].append(
+                    {"id": row["id"], "prediction": int(row["prediction"])}
+                )
+            elif task == "evolution_covariation":
+                submission["evolution"]["covariation"].append(
+                    {"id": row["id"], "prediction": int(row["prediction"])}
+                )
+            else:
+                raise ValueError("Unknown task row: {}".format(task))
+    return submission
+
+
+def read_zip_csv(archive, name):
+    with archive.open(name, "r") as handle:
+        content = io.TextIOWrapper(handle, encoding="utf-8", newline="")
+        return list(csv.DictReader(content))
+
+
+def parse_test_zip(path):
+    submission = {
+        "fitness": [],
+        "structure": [],
+        "evolution": {"quartet": [], "covariation": []},
+    }
+    with zipfile.ZipFile(path, "r") as archive:
+        for row in read_zip_csv(archive, "fitness.csv"):
+            submission["fitness"].append(
+                {"id": row["id"], "prediction": float(row["prediction"])}
+            )
+        for row in read_zip_csv(archive, "structure.csv"):
+            submission["structure"].append(
+                {
+                    "id": row["id"],
+                    "secondary_pairs": json.loads(row["secondary_pairs"]),
+                    "tertiary_coords": json.loads(row["tertiary_coords"]),
+                }
+            )
+        for row in read_zip_csv(archive, "evolution_quartet.csv"):
+            submission["evolution"]["quartet"].append(
+                {"id": row["id"], "prediction": int(row["prediction"])}
+            )
+        for row in read_zip_csv(archive, "evolution_covariation.csv"):
+            submission["evolution"]["covariation"].append(
+                {"id": row["id"], "prediction": int(row["prediction"])}
+            )
+    return submission
+
+
+def load_submission(path, phase_codename):
+    if phase_codename == "dev":
+        return parse_dev_csv(path)
+    if phase_codename == "test":
+        return parse_test_zip(path)
+    raise ValueError("Unknown phase codename: {}".format(phase_codename))
+
+
 def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwargs):
     print("Starting Evaluation.....")
     annotation = load_json(test_annotation_file)
-    submission = load_json(user_submission_file)
+    submission = load_submission(user_submission_file, phase_codename)
 
     if phase_codename == "dev":
         split_name = "train_split"

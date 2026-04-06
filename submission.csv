@@ -1,0 +1,14 @@
+task,id,prediction,secondary_pairs,tertiary_coords
+fitness,fit_dev_1,0.9,,
+fitness,fit_dev_2,0.1,,
+fitness,fit_dev_3,0.2,,
+fitness,fit_dev_4,0.8,,
+structure,str_dev_1,,"[[0, 5], [1, 4]]","[[0.0, 0.0, 0.0], [1.0, 0.0, 0.0], [2.0, 1.0, 0.0], [3.0, 1.0, 0.0], [4.0, 0.0, 0.0], [5.0, 0.0, 0.0]]"
+structure,str_dev_2,,"[[0, 3]]","[[0.0, 0.0, 1.0], [1.0, 1.0, 1.0], [2.0, 1.0, 1.0], [3.0, 0.0, 1.0]]"
+evolution_quartet,evo_dev_q1,0,,
+evolution_quartet,evo_dev_q2,2,,
+evolution_quartet,evo_dev_q3,1,,
+evolution_covariation,evo_dev_c1,1,,
+evolution_covariation,evo_dev_c2,0,,
+evolution_covariation,evo_dev_c3,1,,
+evolution_covariation,evo_dev_c4,0,,

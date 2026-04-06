@@ -2,7 +2,7 @@
 
 <h5>During the Competition</h5>
 <p>
-  Participants submit a single JSON prediction file.
+  Participants submit a single CSV prediction file in the public development phase.
   Please follow the required task formats exactly and complete the submission metadata fields.
 </p>
 
@@ -22,29 +22,29 @@
 
 <h5>Submission File Format</h5>
 <p>
-  The uploaded file must be a <code>.json</code> file with three top-level sections: <code>fitness</code>, <code>structure</code>, and <code>evolution</code>.
+  Public development submissions must be a single <code>.csv</code> file. Final hidden-phase submissions must be a single <code>.zip</code> file.
 </p>
 
-<pre>{
-  "fitness": [
-    {"id": "fit_example", "prediction": 0.42}
-  ],
-  "structure": [
-    {
-      "id": "str_example",
-      "secondary_pairs": [[0, 9], [1, 8]],
-      "tertiary_coords": [[0.0, 0.0, 0.0], [1.2, 0.1, -0.3]]
-    }
-  ],
-  "evolution": {
-    "quartet": [
-      {"id": "quartet_example", "prediction": 2}
-    ],
-    "covariation": [
-      {"id": "cov_example", "prediction": 1}
-    ]
-  }
-}</pre>
+<p>
+  The public development CSV must use the following columns:
+</p>
+
+<pre>task,id,prediction,secondary_pairs,tertiary_coords
+fitness,fit_example,0.42,,
+structure,str_example,,"[[0, 9], [1, 8]]","[[0.0, 0.0, 0.0], [1.2, 0.1, -0.3]]"
+evolution_quartet,quartet_example,2,,
+evolution_covariation,cov_example,1,,</pre>
+
+<p>
+  The final hidden-phase ZIP must contain exactly four CSV files:
+</p>
+
+<ul>
+  <li><code>fitness.csv</code> with columns <code>id,prediction</code></li>
+  <li><code>structure.csv</code> with columns <code>id,secondary_pairs,tertiary_coords</code></li>
+  <li><code>evolution_quartet.csv</code> with columns <code>id,prediction</code></li>
+  <li><code>evolution_covariation.csv</code> with columns <code>id,prediction</code></li>
+</ul>
 
 <h5>Task-Specific Inputs</h5>
 <ul>
